@@ -22,6 +22,13 @@ module.exports = {
                     'Your account ID',
             },
             {
+                key: 'clientList',
+                type: 'string',
+                label: 'list of client ids',
+                helpText:
+                    'comma separated list of clients to filter',
+            },
+            {
                 key: 'startDate',
                 type: 'string',
                 label: 'start date',
@@ -35,7 +42,6 @@ module.exports = {
 
         perform: (z, bundle) => {
             const url = 'https://app.tmetric.com/api/reports/detailed';
-
             // Put the search value in a query param. The details of how to build
             // a search URL will depend on how your API works.
             const options = {
@@ -45,6 +51,9 @@ module.exports = {
                     'endDate': bundle.inputData.endDate,
                 },
             };
+            if (typeof bundle.inputData.clientList === 'string') {
+                options.params.clientList = bundle.inputData.clientList.split(',')
+            }
 
             return z.request(url, options).then((response) => {
                 let durations = []
