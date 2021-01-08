@@ -1,0 +1,17 @@
+{
+  "name": "tmetric-reporter",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --testTimeout 10000"
+  },
+  "dependencies": {
+    "nock": "^13.0.5",
+    "zapier-platform-core": "10.1.2"
+  },
+  "devDependencies": {
+    "jest": "^25.5.3"
+  },
+  "private": true
+}
